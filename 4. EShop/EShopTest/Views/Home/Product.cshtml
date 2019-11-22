@@ -1,0 +1,36 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <partial name="_CategoriesPartial" model="ViewBag.Categories" />
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+                <div class="card mt-4">
+                    <img class="card-img-top img-fluid" src="~/content/@Model.ImageUrl" width="900" height="400" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.Name</h3>
+                        <h4>$@Model.Price</h4>
+                        <p class="card-text">@Model.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Id" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add to cart</a>
+                    </div>
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+
+    </div>

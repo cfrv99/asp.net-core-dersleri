@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "AddPost";
+}
+
+<form method="post" asp-controller="Home" asp-action="AddPost">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input name="Title" type="text" class="form-control" id="title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label for="imageUrl">Image Url</label>
+        <input name="ImageUrl" type="text" class="form-control" id="imageUrl" placeholder="Enter image Url">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="Description" class="form-control" rows="4" id="description" placeholder="Enter description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea name="Content" class="form-control" rows="10" id="content" placeholder="Enter content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script src='https://cloud.tinymce.com/5/tinymce.min.js'></script>
+<script>
+    tinymce.init({
+        selector: '#content',
+          plugins: 'code print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount tinymcespellchecker a11ychecker imagetools textpattern help formatpainter permanentpen pageembed tinycomments mentions linkchecker',
+  toolbar: 'code | formatselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | link image media pageembed | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',
+    });
+</script>

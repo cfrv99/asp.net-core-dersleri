@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    string name = "Gleb";
+}
+
+@if (TempData.ContainsKey("Message"))
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Message"]
+    </div>
+}
+
+<h1>Index</h1>
+<h2>Result: @(2 + 3)</h2>
+<h3>Name: @name</h3>
+
+<ul>
+    @foreach (var item in ViewBag.Data)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+@*<form method="get" action="/Home/Search">
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input required name="searchText" type="text" class="form-control" id="exampleInputPassword1" placeholder="Search text">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>*@

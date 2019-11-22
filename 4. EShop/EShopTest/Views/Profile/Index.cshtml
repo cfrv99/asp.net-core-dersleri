@@ -1,0 +1,28 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>User profile</h1>
+
+<h2>@Model.UserName</h2>
+
+<h3>Name: </h3>
+@if (string.IsNullOrWhiteSpace(Model.FullName))
+{
+    <a asp-area="" asp-controller="Profile" asp-action="Settings">Go to settings to set your name...</a>
+}
+else
+{
+    <p>@Model.FullName</p>
+}
+
+<h3>Profile picture: </h3>
+@if (string.IsNullOrWhiteSpace(Model.PhotoUrl))
+{
+    <a asp-area="" asp-controller="Profile" asp-action="Settings">Go to settings to set your image...</a>
+}
+else
+{
+    <img src="~/content/@Model.PhotoUrl" alt="Alternate Text" style="width: 300px; height: 300px; border-radius: 100%; object-fit: cover" />
+}

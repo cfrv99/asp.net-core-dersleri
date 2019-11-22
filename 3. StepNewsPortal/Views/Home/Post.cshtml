@@ -1,0 +1,22 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = "Post";
+}
+
+<h1>@Model.Title</h1>
+<img src="@Model.ImageUrl" alt="@Model.Title" />
+<p>
+    @Html.Raw(Model.Description)
+</p>
+
+<p>
+    @Html.Raw(Model.Content)
+</p>
+
+@*<a class="btn btn-danger text-white" href="/Home/DeletePost?id=@Model.Id">Delete</a>*@
+
+<form method="post" asp-controller="Home" asp-action="DeletePost">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button class="btn btn-danger text-white" type="submit">Delete</button>
+</form>

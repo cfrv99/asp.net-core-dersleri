@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Product>
+
+<form class="form-inline my-2 my-lg-0">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#exampleModal"> 
+        <i class="fas fa-shopping-cart"></i> 
+        Cart: @ViewBag.Cart
+    </button>
+</form>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @if (Model == null || !Model.Any())
+            {
+                <div class="modal-body">
+                    <p>Your cart is empty!</p>
+                </div>
+            }
+            else
+            {
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td><a asp-area="" asp-controller="Home" asp-action="RemoveFromCart" asp-route-id="@item.Id" class="text-danger"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <h2>Total price: $@Model.Sum(x => x.Price)</h2>
+        </div>
+            }
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a asp-area="" asp-controller="Order" asp-action="NewOrder" class="btn btn-primary">Order</a>
+            </div>
+        </div>
+    </div>
+</div>

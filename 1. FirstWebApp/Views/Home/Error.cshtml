@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1>Error!</h1>
+@if (ViewBag.Code == 404)
+{
+    <h4>Page not found!</h4>
+}
+else
+{
+    <h4>Something went wrong!</h4>
+}
+<a href="/Home/Index">Go back to the home page...</a>
+

@@ -1,0 +1,34 @@
+﻿@page "{handler?}/{username?}"
+@model RazorPagesGuestBook.Pages.GuestBookModel
+@{
+    ViewData["Title"] = "GuestBook";
+}
+
+<h1>GuestBook</h1>
+
+@foreach (var item in Model.Comments)
+{
+    <div class="media my-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg" width="64" height="64" class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0">@item.AppUser.UserName</h5>
+            @item.Text
+        </div>
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Comment.Text">Leave your comment:</label>
+            <textarea asp-for="Comment.Text" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Comment.Text"></span>
+        </div>
+        <button class="btn btn-primary">Send</button>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

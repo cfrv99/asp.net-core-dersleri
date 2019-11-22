@@ -1,0 +1,20 @@
+﻿@page
+@model RazorPagesGuestBook.Pages.ConverterModel
+@{
+    ViewData["Title"] = "Converter";
+}
+
+<h1>Converter</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="azn">AZN: </label>
+        <input type="number" name="Azn" class="form-control" id="azn">
+    </div>
+    <button class="btn badge-primary">Submit</button>
+
+    @if (Model.Result != 0)
+    {
+        <p>Result: @Model.Result</p>
+    }
+</form>

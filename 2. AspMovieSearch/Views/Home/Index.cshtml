@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Search:</h1>
+<form method="get" action="/Home/Index" class="input-group mb-3">
+    <input type="text" name="movie" class="form-control" placeholder="Movie name...">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+    </div>
+</form>
+
+@if (ViewBag.TotalResults != null)
+{
+    <p>Total results: @ViewBag.TotalResults</p>
+}
+
+@if (ViewBag.Movies != null)
+{
+    <div class="row">
+
+        @foreach (var item in ViewBag.Movies)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@item.Poster" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Year</p>
+                        <a href="/Home/Details?imdbId=@item.imdbID" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+}

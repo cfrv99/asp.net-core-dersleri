@@ -1,0 +1,42 @@
+﻿@model List<Post>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (TempData.ContainsKey("Created"))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Created"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData.ContainsKey("Deleted"))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Deleted"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title.ToUpper()</h5>
+                    <p class="card-text">@item.Description</p>
+                    @*<a href="/Home/Post?id=@item.Id" class="btn btn-primary">Details</a>*@
+                    <a asp-controller="Home" asp-action="Post" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
